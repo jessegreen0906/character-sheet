@@ -1,0 +1,153 @@
+@font-face {
+    font-family: horror;
+    src: url("assets/font/font.otf");
+}
+
+html {
+	height: 100%;
+}
+
+table, td {
+    border: black solid 1px;
+    border-collapse: collapse;
+}
+
+div, form {
+    opacity: 100;
+    display: initial;
+    transition: all ease-in-out 0.3s;
+}
+
+body.real .hidden#sheet,
+.hidden {
+    opacity: 0;
+    display: none;
+}
+
+body.real {
+    background: rgba(50,50,50,1);
+	background-image: url("assets/img/background-skull.png");
+	background:url("assets/img/background-skull.png"), radial-gradient(ellipse,rgba(50,50,50,1) 0%, rgba(80, 80, 80, 1) 70%, rgba(50, 50, 50, 1) 100%);
+	background-size: cover;
+	background-repeat: no-repeat;
+    color: rgba(230, 40, 40, 1);
+    font-family: horror, "Arial Black", sans-serif;
+}
+
+body.real .num {
+	font-family: "Arial Black", sans-serif;
+}
+
+body.real #content-wrapper {
+	display: flex;
+	flex-direction: column;
+}
+body.real h1,
+body.real #char-name {
+	align-self: center;
+	background: rgba(50, 50, 50, 0.9);
+	padding: 2.5rem;
+}
+
+body.real #character-generator {
+	background: rgba(50, 50, 50, 0.9);
+	padding: 2.5rem;
+}
+
+body.real #char-name {
+	font-family: "Arial Black", sans-serif;
+}
+
+body.real #sheet {
+	min-width: 50%;
+    display: flex;
+	align-self: center;
+    flex-direction: row;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	background: rgba(50, 50, 50, 0.9);
+}
+
+body.real #sheet:not(.hidden) div {
+	padding: 2.5rem;
+}
+
+body.real #health-meter {
+	flex-direction: row;
+}
+
+body.real #sheet:not(.hidden) label {
+	height: 3rem;
+	width: 3rem;
+	display: inline-block;
+	background-image: url("assets/img/heart.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+
+body.real #sheet:not(.hidden) :checked + label {
+	background-image: url("assets/img/heart-dead.png");
+}
+
+body.real input[type=checkbox],
+body.real .hidden#sheet label {
+	display: none;
+}
+
+body.real td {
+	padding: 0.25rem 0.5rem;
+}
+
+body.real button,
+body.real input[type=submit],
+body.real input#name-input {
+	margin-top: 0.75rem;
+	background: none;
+	color: rgba(230, 40, 40, 1);
+	border: solid 1px rgba(230, 40, 40, 1);
+	font-family: horror, "Arial Black", sans-serif;
+}
+
+body.real input[type=submit]:hover,
+body.real input[type=submit]:active {
+	color: rgba(50, 50, 50,1);
+	background-color: rgba(230, 40, 40, 1);
+	cursor: pointer;
+}
+
+body.real #error-message,
+body.real input#name-input {
+	font-family: "Arial Black", sans-serif;
+}
+
+body.real #game-over {
+	font-family: horror, "Arial Black", sans-serif;
+	font-size: 4rem;
+	z-index: 500;
+	background-image: url("assets/img/death-skull.png");
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	display: flex;
+	align-content: center;
+	justify-content: center;
+}
+body.real #game-over.hidden {
+	display: none;
+}
+
+body.real #dice-roll {
+	padding: initial;
+	font-family: "Arial Black", sans-serif;
+}
+
+body.real #roller {
+	display: flex;
+	flex-direction: column;: width:;
+}

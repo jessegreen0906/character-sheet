@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DM console</title>
+	<style>
+		table, td {
+			border: solid 1px black;
+			border-collapse: collapse;
+		}
+	</style>
+</head>
+<body>
+	<button onclick="engageHell()">Take 'em to hell!</button>
+	<table>
+		<thead><td>Player</td><td>Health</td></thead>
+	</table>
+</body>
+<script>
+	const ws = new WebSocket('ws://localhost:3000')
+
+	function engageHell() {
+		console.log('Engaging hell');
+		ws.send('HELL')
+	}
+
+	function setWsListener() {
+		console.log('...')
+		if(ws.readyState == 0) {
+			setTimeout(setWsListener, 500);
+		} else {
+			ws.onmessage = (data) => {
+				console.log(data.data)
+				let playerData = JSON.parse(data.data);
+				console.log(playerData)
+				if(playerData.name) {
+					let playerName = playerData.name;
+					let found = false;
+					document.querySelectorAll('tr>td:first-child').forEach((node, index) => {
+						if(index) {
+							if(playerName == node.innerHTML) {
+								found = true;
+								node.nextElementSibling.innerHTML = playerData.health
+							}
+							console.log(node.innerHTML)
+						}
+					});
+
+					if (!found) {
+						document.querySelector('table').innerHTML += '<td>'+playerName+'</td><td>'+playerData.health+'</td>'
+					}
+
+
+				}
+			}
+		}
+	}
+	setWsListener();
+</script>
+</html>
